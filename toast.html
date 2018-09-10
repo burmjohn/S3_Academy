@@ -9,7 +9,7 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet">
 	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
   		<!--[if lte IE 8]>
-  			<link href='http://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.ie.css' rel='stylesheet'>
+  			<link href='https://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.ie.css' rel='stylesheet'>
   			<![endif]-->
   			<style>
   				.starter-template {
@@ -174,19 +174,19 @@
 		//http://api.ipstack.com/186.116.207.169?access_key=3c052871be1912bdbdea4af8d7b1fc84&output=json&legacy=1
 		//http://api.ipstack.com/check?access_key=
 		// old https://freegeoip.net/json/
-		$.getJSON('https://api.ipstack.com/check?access_key=3c052871be1912bdbdea4af8d7b1fc84&output=json&legacy=1', function(json) {
-			if (json) {
-				y = json.latitude;
-				x = json.longitude;
-				z = 7
+//		$.getJSON('https://api.ipstack.com/check?access_key=3c052871be1912bdbdea4af8d7b1fc84&output=json&legacy=1', function(json) {
+//			if (json) {
+//				y = json.latitude;
+//				x = json.longitude;
+//				z = 7
 				// Set form lat/lon fields from map center location
-				$('#entry_1233145851').attr('value', y);
-				$('#entry_1376747826').attr('value', x);
-				map.panTo([y, x]);
-			}
-		});
+//				$('#entry_1233145851').attr('value', y);
+//				$('#entry_1376747826').attr('value', x);
+//				map.panTo([y, x]);
+//			}
+//		});
 	</script>
 	
-			<p><small>V1.1</small></p>
+			<p><small>V1.2</small></p>
 </body>
 </html>
