@@ -173,8 +173,8 @@
 		// Test changes for new ipstack 
 		//http://api.ipstack.com/186.116.207.169?access_key=3c052871be1912bdbdea4af8d7b1fc84&output=json&legacy=1
 		//http://api.ipstack.com/check?access_key=
-		$.getJSON('http://api.ipstack.com/check?access_key=3c052871be1912bdbdea4af8d7b1fc84&output=json&legacy=1', function(json) {
 		// old https://freegeoip.net/json/
+		$.getJSON('https://api.ipstack.com/check?access_key=3c052871be1912bdbdea4af8d7b1fc84&output=json&legacy=1', function(json) {
 			if (json) {
 				y = json.latitude;
 				x = json.longitude;
