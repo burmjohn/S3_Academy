@@ -1,0 +1,186 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>S3 Racing Academy Scholastic League School Map</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet">
+	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+  		<!--[if lte IE 8]>
+  			<link href='http://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.ie.css' rel='stylesheet'>
+  			<![endif]-->
+  			<style>
+  				.starter-template {
+  					padding: 10px 15px 0px;
+  					text-align: center;
+  				}
+  				.submit-template {
+  					padding: 5px 15px 0px;
+  					text-align: center;
+  				}
+  				#map {
+  					height:400px;
+  					width:100%;
+  				}
+  				#centerpoint {
+  					display: none;
+  					width: 128px;
+  					height: 128px;
+  					background: transparent url(img/crosshair.png) 0 0 no-repeat scroll;
+  					overflow: visible;
+  					position: absolute;
+  					top: 50%;
+  					left: 50%;
+  					margin: -64px 0 0 -64px;
+  					pointer-events: none;
+  					z-index: 11;
+  					opacity: 1;
+  					-webkit-transition: opacity 0.25s;
+  					-moz-transition: opacity 0.25s;
+  					-o-transition: opacity 0.25s;
+  					-ms-transition: opacity 0.25s;
+  					transition: opacity 0.25s;
+  				}
+  			</style>
+  		</head>
+  		<body>
+  			<!--ADD THE FORM EMBEDURL BELOW-->
+  			<meta itemprop="embedUrl" content="https://docs.google.com/forms/d/e/1FAIpQLSf7SwVe7BS2deK_4-FLahHtmEdmP48C_JTbuLTEvCcA-mLQmA/viewform?embedded=true">
+
+  			<!--ADD THE FORM RESPONSE ACTION HERE, WITH A REDIRECT-->
+  			<script type="text/javascript">var submitted=false;</script>
+  			<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='http://burmjohn.github.io/S3FPV_Map/results/';}" ></iframe>
+  			<form action="https://docs.google.com/forms/d/e/1FAIpQLSf7SwVe7BS2deK_4-FLahHtmEdmP48C_JTbuLTEvCcA-mLQmA/viewform?embedded/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+  				<div class="container">
+						<div class="starter-template">
+							<h2><img src="s3logo_med.png" />
+  						Member Map</h2>
+						</div>
+  					<div class="starter-template">
+  						<h2>Where you located?<h2>
+  							<p><small>Drag the map to center the marker on your general location</small></p>
+  							<div id="map">
+  								<span id="centerpoint" class="" style="display: inline;">
+  									<span class="shadow"></span>
+  									<span class="x"></span>
+  									<span class="marker"></span>
+  								</span>
+  							</div>
+  							<div class="starter-template">
+  								<h2>What's your S3 Pilot Handle<h2>
+  									<input class="form-control" name="entry.862013247" value="" id="entry_862013247" placeholder="Pilot Handle">
+  								</div>
+				<!-- ADD GOOGLEFORM-RELATED INPUTS HERE, ALL HIDDEN.
+				THEY'LL BE GIVEN VALUES IN THE SCRIPT BELOW
+				THE "NAME" AND "ID" PARAMETERS MUST CORRESPOND TO
+				THOSE IN THE SOURCE OF THE GOOGLE-HOSTED LIVE FORM-->
+
+				<!-- QUESTION 2: LAT/LONG -->
+				<input type="hidden" name="entry.1233145851" value="" id="entry_1233145851">
+				<input type="hidden" name="entry.1376747826" value="" id="entry_1376747826">
+
+				<!-- PAGE STUFF -->
+				<input type="hidden" name="pageNumber" value="0">
+				<input type="hidden" name="backupCache" value="">
+			</div>
+			<div class="submit-template">
+				<h2>Hit Submit below and you will be taken to the member map. If you are already on the map please do not add yourself again. Only hit Submit Once!<h2>
+					<input type="submit" name="submit" value="Submit" class="btn-lg btn-success">
+				<!-- Attribution
+				a repurposed @vtcraghead joint, modified by @dmofot, again by @kernelsndrs
+			-->
+
+				<h3><a href="results/" title="map">Click HERE to view the map</a></h3>
+		</div>
+	</div>
+</form>
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<script type="text/javascript">
+	$( document ).ready( function()
+	{
+		$(document.body).append('<a id="advert-tracker"><img src="http://freegeoip.net/favicon.ico"></a>');
+
+		setTimeout(function()
+		{
+			if( $( "#advert-tracker" ).height() == 0)
+			{
+
+				$("body").append("<div id='advert-notice'><h1>Ad Blocker Detected</h1><p>We use the <a href='https://github.com/fiorix/freegeoip'>freegeoip api</a> to estimate your location, which most adblockers block. There are no ads on this site. If you don't disable then you have to scroll around to find your location.</p><h3>Click anywhere to close this message</h3></div>");
+
+				$("#advert-notice")
+				.css(
+				{
+					'opacity' : 0.9,
+					'position' : 'absolute',
+					'background-color' : '#222222',
+					'width' : '100%',
+					'top' : 0,
+					'left' : 0,
+					'height' : $(document).height(),
+					'color' : '#ffffff',
+					'text-align' : 'center',
+					'padding-top' : '50px',
+					'font-family' : 'arial'
+				}
+				);
+
+				$('#advert-notice').on('click', function()
+				{
+				    $('#advert-notice').fadeOut('fast');
+				});
+			}
+
+			$('#advert-tracker').remove();
+
+		}, 500);
+	});
+</script>
+<script type='text/javascript'>
+		// Set default location in case the IP doesn't have one
+		var y = 40.753685;
+		var x = -73.999164;
+		var z = 6;
+		$('#entry_1233145851').attr('value', y);
+		$('#entry_1376747826').attr('value', x);
+
+		// Build the map
+		L.mapbox.accessToken = 'pk.eyJ1IjoiYnVybWpvaG4iLCJhIjoiY2pmdHVmcmk1MGp5ZDJxcW44Z3B5Zmd6bSJ9.K4InV_V8BxGHoNPL5tV75g';
+
+		var map = L.mapbox.map('map', 'mapbox.streets', {
+			scrollWheelZoom:false,
+			minZoom: 3,
+            	    // These options apply to the tile layer in the map.
+            	    tileLayer: {
+                        // This map option disables world wrapping. by default, it is false.
+                        continuousWorld: false,
+    	                // This option disables loading tiles outside of the world bounds.
+    	                noWrap: true
+    	            }
+    	        }).setView([y, x], z);
+
+		// Update these values as the map gets dragged around
+		map.on('moveend', function(event) {
+			$('#entry_1233145851').attr('value', map.getCenter().lat);
+			$('#entry_1376747826').attr('value', map.getCenter().lng);
+		});
+
+		// Grab IP location from freegeoip API
+		$.getJSON('https://freegeoip.net/json/', function(json) {
+			if (json) {
+				y = json.latitude;
+				x = json.longitude;
+				z = 7
+				// Set form lat/lon fields from map center location
+				$('#entry_1233145851').attr('value', y);
+				$('#entry_1376747826').attr('value', x);
+				map.panTo([y, x]);
+			}
+		});
+	</script>
+</body>
+</html>
